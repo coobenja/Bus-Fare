@@ -5,7 +5,9 @@ public class detection : MonoBehaviour {
 	public Transform player;
 	public float detect;
 	public float escape;
-	private float speed = .1f;
+	private float speed = .05f;
+
+	public bool hitStun;
 
 	public bool chasing;
 
@@ -20,9 +22,8 @@ public class detection : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
 		float dist = Vector2.Distance(player.position, transform.position);
-		Debug.Log (dist);
+		//Debug.Log (dist);
 		 if (dist <= detect && manager.numChasers < manager.chaseMax) {
 			chasing = true;
 			manager.numChasers += 1;
@@ -33,11 +34,9 @@ public class detection : MonoBehaviour {
 			manager.numChasers -= 1;
 		}
 
-		if (chasing) {
+		if (chasing && !hitStun && dist > .9f) {
 			transform.position = Vector2.MoveTowards(transform.position, player.position, speed);
 		}
 
-
-	
 	}
 }
