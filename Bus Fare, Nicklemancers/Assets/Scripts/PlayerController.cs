@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 			comboCounter += 1;
 		}
 		//Finisher Kick
-		else if (Input.GetKeyDown ("space") && !punching) {
+		else if (Input.GetKeyDown ("space") && !punching && comboCounter == 2) {
 			comboBuffer = 0f;
 			comboCounter = 0;
 			//Special Effects!

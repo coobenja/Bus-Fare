@@ -5,8 +5,11 @@ public class CoinVelocity : MonoBehaviour {
 
 	public float speed;
 	public float time;
+	private float startTime;
 	private float startHeight;
 	private SpriteRenderer sprite_renderer;
+	private float lifetime = 5f;
+	private float flickrTime = 3f;
 	
 	//private float startHeight;
 	
@@ -17,6 +20,9 @@ public class CoinVelocity : MonoBehaviour {
 		Rigidbody2D rigid;
 		rigid = GetComponent<Rigidbody2D> ();
 		rigid.AddForce (coinspout * speed, ForceMode2D.Force);
+		GetComponent<CircleCollider2D> ().enabled = false;
+		startTime = Time.time;
+
 	}
 
 	void Update() {
@@ -25,14 +31,13 @@ public class CoinVelocity : MonoBehaviour {
 
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;
+			GetComponent<CircleCollider2D>().enabled = true;
 
-			if (Time.time >= 3f){
-				if (Time.time >= time) {
+			if(startTime + lifetime - Time.time > 0) {
+				if (startTime + flickrTime - Time.time <= 0 && Time.time > time) {
 					sprite_renderer = GetComponent<SpriteRenderer> ();
-					time = Time.time + .1f;
-					if(Time.time >=4.5f) {
-						Destroy(gameObject);
-					}
+					time = Time.time + .2f;
+
 					if (sprite_renderer.enabled){
 						sprite_renderer.enabled = false;
 					}
@@ -41,12 +46,11 @@ public class CoinVelocity : MonoBehaviour {
 					}
 
 				}
-
 			}
+			else
+				Destroy(gameObject);
 		}
-				
 	}
-		
 }
 	
 
