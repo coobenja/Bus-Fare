@@ -76,11 +76,12 @@ public class PlayerController : MonoBehaviour {
 			//Special Effects!
 			kickEffect.Play();
 
-			kickColl.enabled = true;
+			//kickColl.enabled = true;
 			kickMesh.enabled = true;
 			punching = true;
 			//Ending Lag
 			punchTime = 1f;
+			Time.timeScale = .2f;
 		}
 		//Decrement Punch Duration
 		if (punching && punchTime > 0) {
@@ -89,6 +90,11 @@ public class PlayerController : MonoBehaviour {
 			if(punchTime < .7f){
 				kickColl.enabled = false;
 				kickMesh.enabled = false;
+			}
+			//Reverts Timescale
+			if(punchTime < .9f && kickMesh.enabled == true){
+				Time.timeScale = 1f;
+				kickColl.enabled = true;
 			}
 		}
 		//Finish Punch
@@ -133,7 +139,7 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "NPC" && kickColl.enabled == true) {
 			other.gameObject.GetComponent<Rigidbody2D>().
-				AddForce(new Vector2(50f * facingRight, 0), ForceMode2D.Impulse);
+				AddForce(new Vector2(10f * facingRight, 0), ForceMode2D.Impulse);
 		}
 	}
 
