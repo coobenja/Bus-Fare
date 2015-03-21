@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 		vert = Input.GetAxis ("Vertical");
 
 		transform.Translate (Vector2.right * hor/13f * facingRight);
-		transform.Translate (Vector2.up * vert/19f);
+		transform.Translate (Vector2.up * vert/13f);
 		//////////////////////////////////////////
 
 		//Punching////////////////////////////////
