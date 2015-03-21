@@ -4,7 +4,9 @@ using System.Collections;
 public class CoinVelocity : MonoBehaviour {
 
 	public float speed;
+	public float time;
 	private float startHeight;
+	private SpriteRenderer sprite_renderer;
 	
 	//private float startHeight;
 	
@@ -24,9 +26,28 @@ public class CoinVelocity : MonoBehaviour {
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;
 
+			if (Time.time >= 3f){
+				if (Time.time >= time) {
+					sprite_renderer = GetComponent<SpriteRenderer> ();
+					time = Time.time + .1f;
+					if(Time.time >=4.5f) {
+						Destroy(gameObject);
+					}
+					if (sprite_renderer.enabled){
+						sprite_renderer.enabled = false;
+					}
+					else if (!sprite_renderer.enabled) {
+						sprite_renderer.enabled = true;
+					}
 
+				}
+
+			}
 		}
-		
+				
 	}
-	
+		
 }
+	
+
+
