@@ -22,20 +22,20 @@ public class NPCCoins : MonoBehaviour {
 			coins = coins - 25;
 			Rigidbody2D deathCash;
 			deathCash = Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
-			deathCash.velocity = transform.TransformDirection (Vector2.up * 10);
+
 		}
 		if (other.gameObject.tag == "Fist") {
 			if (chance) {
 				coins = coins - 5;
 				Rigidbody2D deathCash;
 				deathCash = Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
-				deathCash.velocity = transform.TransformDirection (Vector2.up * 10);
+
 			} 
 			else {
 				coins = coins - 10;
 				Rigidbody2D deathCash;
 				deathCash = Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
-				deathCash.velocity = transform.TransformDirection (Vector2.up * 10);
+
 			}
 		}
 		Debug.Log (other.gameObject.tag == "Foot");
