@@ -7,7 +7,7 @@ public class NPCCoins : MonoBehaviour {
 	public GameObject dime;
 	public GameObject quarter;
 
-	private float coins;
+	public float coins;
 	private bool chance;
 	// Use this for initialization
 	void Start () {
