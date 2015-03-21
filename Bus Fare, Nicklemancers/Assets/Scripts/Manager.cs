@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Manager : MonoBehaviour {
 
-	public int chaseMax = 1;
+	public int chaseMax = 2;
 	public int numChasers = 0;
 
 
