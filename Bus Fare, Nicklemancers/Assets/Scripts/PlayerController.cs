@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
 	public float comboBuffer = .5f;
 	public int comboCounter = 0;
 
+	private int money = 0;
+
 	private bool punching = false;
 	public BoxCollider2D punchColl;
 	public MeshRenderer punchMesh;
@@ -43,6 +45,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		//Ignore Other Character Collisions
+		Physics2D.IgnoreLayerCollision (8,8);
 
 		//Player Movement/////////////////////////
 		hor = Input.GetAxis ("Horizontal");
@@ -141,6 +146,22 @@ public class PlayerController : MonoBehaviour {
 			other.gameObject.GetComponent<Rigidbody2D>().
 				AddForce(new Vector2(10f * facingRight, 0), ForceMode2D.Impulse);
 		}
+		if (other.gameObject.name == "dime(Clone)") {
+			Destroy(other.gameObject);
+			money += 10;
+			Debug.Log("Bling");
+		}
+		if (other.gameObject.name == "nickel(Clone)") {
+			Destroy(other.gameObject);
+			money += 5;
+			Debug.Log("Bling");
+		}
+		if (other.gameObject.name == "quarter(Clone)") {
+			Destroy(other.gameObject);
+			money += 25;
+			Debug.Log("Bling");
+		}
+
 	}
 
 

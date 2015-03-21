@@ -33,6 +33,9 @@ public class detection : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		//Ignore Other Character Collisions
+		Physics2D.IgnoreLayerCollision (8,8);
+
 		//Movement/Chasing Logic///////////////////
 		float dist = Vector2.Distance(player.position, transform.position);
 		//Debug.Log (dist);
