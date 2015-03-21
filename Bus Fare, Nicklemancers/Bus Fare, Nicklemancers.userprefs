@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NPCCoins.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\NPCCoins.cs" Line="44" Column="2" />
-      <File FileName="Assets\Scripts\detection.cs" Line="22" Column="23" />
-      <File FileName="Assets\Scripts\CoinVelocity.cs" Line="8" Column="4" />
-      <File FileName="Assets\Scripts\Manager.cs" Line="20" Column="1" />
+      <File FileName="Assets\Scripts\CamShakeSimple.cs" Line="25" Column="18" />
+      <File FileName="Assets\Scripts\NPCCoins.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\detection.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ZTranslate.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="141" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

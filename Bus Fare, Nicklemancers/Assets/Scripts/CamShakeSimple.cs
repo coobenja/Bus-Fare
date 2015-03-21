@@ -14,7 +14,7 @@ public class CamShakeSimple : MonoBehaviour
 	public PlayerController playerController;
 	
 	void Start(){
-		originalCameraPosition = mainCamera.transform.position;
+		//originalCameraPosition = mainCamera.transform.position;
 		playerController = GetComponent<PlayerController> ();
 		isShaking = false;
 	}
@@ -52,7 +52,7 @@ public class CamShakeSimple : MonoBehaviour
 	void StopShaking()
 	{
 		CancelInvoke("CameraShake");
-		mainCamera.transform.position = originalCameraPosition;
+		//mainCamera.transform.position = originalCameraPosition;
 		isShaking = false;
 	}
 	
