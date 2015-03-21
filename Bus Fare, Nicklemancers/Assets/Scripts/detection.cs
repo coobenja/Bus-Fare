@@ -21,6 +21,8 @@ public class detection : MonoBehaviour {
 	void Start(){
 		manager = GameObject.Find("Manager").GetComponent<Manager>();
 		player = GameObject.Find ("Player").transform;
+
+
 	}
 	
 	// Update is called once per frame
