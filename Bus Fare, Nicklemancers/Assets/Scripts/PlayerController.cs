@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
 	public ParticleSystem kickEffect;
 	public ParticleSystem punchEffect;
 
+	public Animator playerAnim;
+
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +43,8 @@ public class PlayerController : MonoBehaviour {
 		kickMesh = foot.gameObject.GetComponentInChildren <MeshRenderer> ();
 		kickMesh.enabled = false;
 		kickColl.enabled = false;
+
+		playerAnim = transform.Find ("PCSprite").GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -54,12 +58,30 @@ public class PlayerController : MonoBehaviour {
 		vert = Input.GetAxis ("Vertical");
 
 		if (punchTime <= .3f) {
+			playerAnim.SetBool("walking", true);
 			transform.Translate (Vector2.right * hor/13f * facingRight);
 			transform.Translate (Vector2.up * vert/13f);
 		}
+		else
+			playerAnim.SetBool("walking", false);
 		//////////////////////////////////////////
 
 		//Punching + Kicking//////////////////////////
+
+		//Punching Animations
+		if (punching && comboCounter == 1) {
+			playerAnim.SetBool ("punch1", true);
+		} else if (punching && comboCounter == 2) {
+			playerAnim.SetBool ("punch2", true);
+		} else if (punching && kickMesh.enabled == true) {
+			playerAnim.SetBool ("kick", true); 
+		} /*else if (!punching) {
+			playerAnim.SetBool ("punch1", false);
+			playerAnim.SetBool ("punch2", false);
+			playerAnim.SetBool ("kick", false); 
+		}*/
+
+
 		//Start Punch
 		if (Input.GetKeyDown ("space") && !punching && comboCounter != 2) {
 			punching = true;
