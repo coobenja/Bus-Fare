@@ -5,7 +5,10 @@ public class detection : MonoBehaviour {
 
 	private int money = 25;
 
+	private bool right = true;
+
 	public Transform player;
+	public Transform fist;
 	public float detect;
 	public float escape;
 	private float speed = .035f;
@@ -42,6 +45,15 @@ public class detection : MonoBehaviour {
 			if(other.*/
 	// Update is called once per frame
 	void Update () {
+
+		//Facing left and right
+		if (player.position.x - transform.position.x > 0 && !right) {
+			Flip ();
+			Debug.Log("Flip right");
+		} else if (player.position.x - transform.position.x <= 0 && right) {
+			Flip ();
+			Debug.Log("Flip left");
+		}
 
 		//Ignore Other Character Collisions
 		Physics2D.IgnoreLayerCollision (8,8);
@@ -126,5 +138,13 @@ public class detection : MonoBehaviour {
 			}
 
 		}
+	}
+
+	void Flip(){
+		// Switch the way the player is labelled as facing
+		right = !right;
+		//Debug.Log ("Facing is: " + facingRight);
+		
+		transform.Rotate (0f, 180f, 0f);
 	}
 }
