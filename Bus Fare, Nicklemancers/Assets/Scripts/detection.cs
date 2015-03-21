@@ -17,10 +17,11 @@ public class detection : MonoBehaviour {
 
 	public float time;
 	private float startTime;
-	private float lifetime = 5f;
-	private float flickrTime = 3f;
+	private float lifetime = 6f;
+	private float flickrTime = 1f;
 	private SpriteRenderer sprite_renderer;
 	private NPCCoins npcCoins;
+	private bool keepCheckingForLTZero = true;
 
 
 	//public GameObject manager;
@@ -96,21 +97,27 @@ public class detection : MonoBehaviour {
 
 	if (npcCoins.coins <= 0 ){
 			chasing = false;
+			if (keepCheckingForLTZero) {
+				startTime = Time.time;
+				keepCheckingForLTZero = false;
+			}
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+			GetComponent<Rigidbody2D>().gravityScale = 0f;
 				
-				GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0f);
-				GetComponent<Rigidbody2D>().gravityScale = 0f;
-				
-				
+
 				if(startTime + lifetime - Time.time > 0) {
 					if (startTime + flickrTime - Time.time <= 0 && Time.time > time) {
-						sprite_renderer = GetComponent<SpriteRenderer> ();
-						time = Time.time + .2f;
-						
+						sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
+						time = Time.time + .3f;
+					Debug.Log ("Have enterted this if statement");
 						if (sprite_renderer.enabled){
-							sprite_renderer.enabled = false;
+						Debug.Log("true");
+							GetComponent<SpriteRenderer>().enabled = false;
 						}
 						else if (!sprite_renderer.enabled) {
-							sprite_renderer.enabled = true;
+							//sprite_renderer.enabled = true;
+						GetComponent<SpriteRenderer>().enabled =true ;
+						Debug.Log ("False");
 						}
 						
 					}
