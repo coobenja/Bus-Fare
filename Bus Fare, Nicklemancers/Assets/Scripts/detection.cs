@@ -15,12 +15,21 @@ public class detection : MonoBehaviour {
 
 	public bool chasing;
 
+	public float time;
+	private float startTime;
+	private float lifetime = 5f;
+	private float flickrTime = 3f;
+	private SpriteRenderer sprite_renderer;
+	private NPCCoins npcCoins;
+
+
 	//public GameObject manager;
 	public Manager manager;
 
 	void Start(){
 		manager = GameObject.Find("Manager").GetComponent<Manager>();
 		player = GameObject.Find ("Player").transform;
+		npcCoins = GetComponent<NPCCoins>();
 
 
 	}
@@ -67,7 +76,7 @@ public class detection : MonoBehaviour {
 
 		//Death and Taxes////////////////////////
 
-		if (money <= 0) {
+		/*if (money <= 0) {
 			manager.numChasers -= 1;
 			Destroy(this);
 		}
@@ -83,7 +92,32 @@ public class detection : MonoBehaviour {
 		} else if (other.gameObject.tag == "Foot") {
 			hitStun = true;
 			money -= 10;
-		}
+		}*/
 
+	if (npcCoins.coins <= 0 ){
+			chasing = false;
+				
+				GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0f);
+				GetComponent<Rigidbody2D>().gravityScale = 0f;
+				
+				
+				if(startTime + lifetime - Time.time > 0) {
+					if (startTime + flickrTime - Time.time <= 0 && Time.time > time) {
+						sprite_renderer = GetComponent<SpriteRenderer> ();
+						time = Time.time + .2f;
+						
+						if (sprite_renderer.enabled){
+							sprite_renderer.enabled = false;
+						}
+						else if (!sprite_renderer.enabled) {
+							sprite_renderer.enabled = true;
+						}
+						
+					}
+				}
+				else
+					Destroy(gameObject);
+
+		}
 	}
 }
