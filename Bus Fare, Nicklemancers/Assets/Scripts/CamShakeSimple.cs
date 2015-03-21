@@ -22,7 +22,7 @@ public class CamShakeSimple : MonoBehaviour
 	void Update(){
 		
 		if (playerController.kickColl.enabled == true && !isShaking) {
-			shakeAmt = .1f;
+			shakeAmt = .05f;
 			InvokeRepeating ("CameraShake", 0, .01f);
 			Invoke ("StopShaking", 0.3f);
 			isShaking = true;

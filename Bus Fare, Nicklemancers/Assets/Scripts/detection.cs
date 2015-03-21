@@ -60,6 +60,7 @@ public class detection : MonoBehaviour {
 		//Death and Taxes////////////////////////
 
 		if (money <= 0) {
+			manager.numChasers -= 1;
 			Destroy(this);
 		}
 		Debug.Log (money);
