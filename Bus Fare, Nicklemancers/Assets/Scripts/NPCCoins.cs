@@ -18,27 +18,30 @@ public class NPCCoins : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		chance = Random.value > .50;
-		if (other.gameObject.tag == "Foot") {
-			coins = coins - 25;
-			Rigidbody2D deathCash;
-			deathCash = Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
-
-		}
-		if (other.gameObject.tag == "Fist") {
-			if (chance) {
-				coins = coins - 5;
+		if (coins > 0) {
+			if (other.gameObject.tag == "Foot") {
+				coins = coins - 25;
 				Rigidbody2D deathCash;
-				deathCash = Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
-
-			} 
-			else {
-				coins = coins - 10;
-				Rigidbody2D deathCash;
-				deathCash = Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
+				deathCash = Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
 
 			}
-		}
-		Debug.Log (other.gameObject.tag == "Foot");
+			if (other.gameObject.tag == "Fist") {
+				if (chance) {
+					coins = coins - 5;
+					Rigidbody2D deathCash;
+					deathCash = Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
+
+				} else {
+					coins = coins - 10;
+					Rigidbody2D deathCash;
+					deathCash = Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
+
+				}
+			}
+		/*} else {
+			bool dead = true;
+		}*/
 
 	}			
+}
 }
