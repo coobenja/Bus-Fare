@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\CamShakeSimple.cs" />
      <Compile Include="Assets\Scripts\CameraTracking.cs" />
      <Compile Include="Assets\Scripts\CoinVelocity.cs" />
+     <Compile Include="Assets\Scripts\GUIComponent.cs" />
      <Compile Include="Assets\Scripts\Manager.cs" />
      <Compile Include="Assets\Scripts\NPCCoins.cs" />
      <Compile Include="Assets\Scripts\NPCMove.cs" />
