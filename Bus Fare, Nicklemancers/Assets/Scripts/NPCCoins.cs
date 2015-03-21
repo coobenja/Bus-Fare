@@ -38,9 +38,7 @@ public class NPCCoins : MonoBehaviour {
 
 				}
 			}
-		/*} else {
-			bool dead = true;
-		}*/
+		
 
 	}			
 }
