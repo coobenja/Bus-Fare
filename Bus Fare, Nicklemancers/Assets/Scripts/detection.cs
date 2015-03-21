@@ -63,7 +63,7 @@ public class detection : MonoBehaviour {
 			manager.numChasers -= 1;
 			Destroy(this);
 		}
-		Debug.Log (money);
+		//Debug.Log (money);
 
 		////////////////////////////////////////
 	}

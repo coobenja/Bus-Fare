@@ -18,12 +18,17 @@ public class PlayerController : MonoBehaviour {
 	public MeshRenderer punchMesh;
 	public BoxCollider2D kickColl;
 	public MeshRenderer kickMesh;
+	public ParticleSystem kickEffect;
+	public ParticleSystem punchEffect;
 
 
 	// Use this for initialization
 	void Start () {
 		fist = transform.Find("Fist").gameObject;
 		foot = transform.Find("Foot").gameObject;
+
+		kickEffect = foot.transform.Find ("skillAttack").GetComponent<ParticleSystem> ();
+		punchEffect = fist.transform.Find ("skillAttackFist").GetComponent<ParticleSystem> ();
 
 		punchColl = fist.gameObject.GetComponentInChildren <BoxCollider2D>();
 		punchMesh = fist.gameObject.GetComponentInChildren <MeshRenderer> ();
@@ -55,6 +60,10 @@ public class PlayerController : MonoBehaviour {
 			punching = true;
 			punchColl.enabled = true;
 			punchMesh.enabled = true;
+
+			//Special Effects!
+			punchEffect.Play();
+
 			//Debug.Log ("Start");
 			//Combo counting
 			comboBuffer = 1f;
@@ -64,6 +73,9 @@ public class PlayerController : MonoBehaviour {
 		else if (Input.GetKeyDown ("space") && !punching) {
 			comboBuffer = 0f;
 			comboCounter = 0;
+			//Special Effects!
+			kickEffect.Play();
+
 			kickColl.enabled = true;
 			kickMesh.enabled = true;
 			punching = true;
