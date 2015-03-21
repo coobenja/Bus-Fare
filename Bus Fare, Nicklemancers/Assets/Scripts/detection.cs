@@ -2,12 +2,16 @@
 using System.Collections;
 
 public class detection : MonoBehaviour {
+
+	private int money = 25;
+
 	public Transform player;
 	public float detect;
 	public float escape;
-	private float speed = .05f;
+	private float speed = .035f;
 
 	public bool hitStun;
+	private float stunTime = .15f;
 
 	public bool chasing;
 
@@ -22,6 +26,7 @@ public class detection : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		//Movement/Chasing Logic///////////////////
 		float dist = Vector2.Distance(player.position, transform.position);
 		//Debug.Log (dist);
 		 if (dist <= detect && manager.numChasers < manager.chaseMax) {
@@ -36,6 +41,37 @@ public class detection : MonoBehaviour {
 
 		if (chasing && !hitStun && dist > .9f) {
 			transform.position = Vector2.MoveTowards(transform.position, player.position, speed);
+		}
+		//////////////////////////////////////////
+
+		//Hitstun Logic///////////////////////////
+
+		if (hitStun && stunTime > 0) {
+			stunTime -= Time.deltaTime;
+		} else if (hitStun && stunTime <= 0) {
+			stunTime = .15f;
+			hitStun = false;
+		}
+
+		/////////////////////////////////////////
+
+		//Death and Taxes////////////////////////
+
+		if (money <= 0) {
+			Destroy(this);
+		}
+		Debug.Log (money);
+
+		////////////////////////////////////////
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "Fist") {
+			hitStun = true;
+			money -= 5;
+		} else if (other.gameObject.tag == "Foot") {
+			hitStun = true;
+			money -= 10;
 		}
 
 	}

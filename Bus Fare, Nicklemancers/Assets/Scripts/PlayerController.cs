@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	private float hor;
 	private float vert;
-	private int facingRight = 1;
+	public int facingRight = 1;
 
 	public GameObject fist;
 	public GameObject foot;
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour {
 			comboCounter = 0;
 		}
 
-		Debug.Log ("ComboBuffer is: " + comboBuffer + " Combocount is: " + comboCounter);
+		//Debug.Log ("ComboBuffer is: " + comboBuffer + " Combocount is: " + comboCounter);
 		//////////////////////////////////////////
 
 		//Facing left and right////////////////
@@ -115,6 +115,14 @@ public class PlayerController : MonoBehaviour {
 		//Debug.Log ("Facing is: " + facingRight);
 		
 		transform.Rotate (0f, 180f, 0f);
+	}
+
+	//Adding force for the kick yo
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "NPC" && kickColl.enabled == true) {
+			other.gameObject.GetComponent<Rigidbody2D>().
+				AddForce(new Vector2(50f * facingRight, 0), ForceMode2D.Impulse);
+		}
 	}
 
 
