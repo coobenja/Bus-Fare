@@ -18,12 +18,17 @@ public class PlayerController : MonoBehaviour {
 	public MeshRenderer punchMesh;
 	public BoxCollider2D kickColl;
 	public MeshRenderer kickMesh;
+	public ParticleSystem kickEffect;
+	public ParticleSystem punchEffect;
 
 
 	// Use this for initialization
 	void Start () {
 		fist = transform.Find("Fist").gameObject;
 		foot = transform.Find("Foot").gameObject;
+
+		kickEffect = foot.transform.Find ("skillAttack").GetComponent<ParticleSystem> ();
+		punchEffect = fist.transform.Find ("skillAttackFist").GetComponent<ParticleSystem> ();
 
 		punchColl = fist.gameObject.GetComponentInChildren <BoxCollider2D>();
 		punchMesh = fist.gameObject.GetComponentInChildren <MeshRenderer> ();
@@ -55,6 +60,10 @@ public class PlayerController : MonoBehaviour {
 			punching = true;
 			punchColl.enabled = true;
 			punchMesh.enabled = true;
+
+			//Special Effects!
+			punchEffect.Play();
+
 			//Debug.Log ("Start");
 			//Combo counting
 			comboBuffer = 1f;
@@ -64,11 +73,15 @@ public class PlayerController : MonoBehaviour {
 		else if (Input.GetKeyDown ("space") && !punching) {
 			comboBuffer = 0f;
 			comboCounter = 0;
-			kickColl.enabled = true;
+			//Special Effects!
+			kickEffect.Play();
+
+			//kickColl.enabled = true;
 			kickMesh.enabled = true;
 			punching = true;
 			//Ending Lag
 			punchTime = 1f;
+			Time.timeScale = .2f;
 		}
 		//Decrement Punch Duration
 		if (punching && punchTime > 0) {
@@ -77,6 +90,11 @@ public class PlayerController : MonoBehaviour {
 			if(punchTime < .7f){
 				kickColl.enabled = false;
 				kickMesh.enabled = false;
+			}
+			//Reverts Timescale
+			if(punchTime < .9f && kickMesh.enabled == true){
+				Time.timeScale = 1f;
+				kickColl.enabled = true;
 			}
 		}
 		//Finish Punch
@@ -121,7 +139,7 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "NPC" && kickColl.enabled == true) {
 			other.gameObject.GetComponent<Rigidbody2D>().
-				AddForce(new Vector2(50f * facingRight, 0), ForceMode2D.Impulse);
+				AddForce(new Vector2(10f * facingRight, 0), ForceMode2D.Impulse);
 		}
 	}
 
