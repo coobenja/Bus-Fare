@@ -24,7 +24,12 @@ public class detection : MonoBehaviour {
 
 
 	}
-	
+
+	/*void OnCollisionStay2D( Collision2D other) {
+		if(other.gameObject.tag == "NPC") {
+			if (other.gameObjectameObject.Find("NPC").GetComponent<detection>().chasing) //will check if true
+			other.gameObject.GetComponent("detection")();
+			if(other.*/
 	// Update is called once per frame
 	void Update () {
 
