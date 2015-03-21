@@ -80,6 +80,13 @@ public class PlayerController : MonoBehaviour {
 			playerAnim.SetBool ("punch2", false);
 			playerAnim.SetBool ("kick", false); 
 		}*/
+		else if (playerAnim.GetBool("walking") == false){
+			playerAnim.SetBool ("kick", false);
+			//playerAnim.SetBool ("idle", true);
+			playerAnim.SetBool ("punch1", false);
+			playerAnim.SetBool ("punch2", false);
+		}
+			
 
 
 		//Start Punch
