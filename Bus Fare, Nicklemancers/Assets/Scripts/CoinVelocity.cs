@@ -27,7 +27,6 @@ public class CoinVelocity : MonoBehaviour {
 
 	void Update() {
 		if(transform.position.y <= (startHeight - 1f)) {
-			Debug.Log ("doing shit");
 
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;

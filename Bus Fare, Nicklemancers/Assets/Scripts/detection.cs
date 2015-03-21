@@ -107,23 +107,23 @@ public class detection : MonoBehaviour {
 
 				if(startTime + lifetime - Time.time > 0) {
 					if (startTime + flickrTime - Time.time <= 0 && Time.time > time) {
-						sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
+						sprite_renderer = GetComponent<SpriteRenderer>();
 						time = Time.time + .3f;
-					Debug.Log ("Have enterted this if statement");
+						Debug.Log ("Have enterted this if statement");
 						if (sprite_renderer.enabled){
-						Debug.Log("true");
-							GetComponent<SpriteRenderer>().enabled = false;
+							Debug.Log(sprite_renderer.enabled);
+							sprite_renderer.enabled = false;
 						}
 						else if (!sprite_renderer.enabled) {
-							//sprite_renderer.enabled = true;
-						GetComponent<SpriteRenderer>().enabled =true ;
-						Debug.Log ("False");
+							sprite_renderer.enabled =true ;
+							Debug.Log (sprite_renderer.enabled);
 						}
 						
 					}
 				}
-				else
+				else {
 					Destroy(gameObject);
+			}
 
 		}
 	}
