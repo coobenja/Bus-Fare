@@ -1,6 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
+    <Files>
+      <File FileName="..\..\Space_Jam\Assets\Scripts\PlayerController.cs" Line="37" Column="18" />
+      <File FileName="..\..\Space_Jam\Assets\Scripts\MeleeSwing.cs" Line="67" Column="4" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="33" Column="44" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
