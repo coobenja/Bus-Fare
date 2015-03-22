@@ -29,22 +29,6 @@ public class PlayerController : MonoBehaviour {
 
 	public Animator playerAnim;
 
-	public bool punch1ready = true;
-	public bool punch2ready = true;
-	public bool kickReady = true;
-	public bool comboResetBool = true;
-
-	public bool punch1 = true;
-	public bool kicking = false;
-
-	public float punchTimeoutLimit = .5f;
-	public float punchDelay = .1f;
-	public float punchDelayCountdown=0;
-	public float punchTimeout = 0;
-	public float punchDuration = .2f;
-	private float timeOfPunch;
-
-
 
 	// Use this for initialization
 	void Start () {
@@ -78,129 +62,33 @@ public class PlayerController : MonoBehaviour {
 		vert = Input.GetAxis ("Vertical");
 
 		if (punchTime <= .3f) {
-			//playerAnim.SetTrigger("walking");
+			playerAnim.SetBool("walking", true);
 			transform.Translate (Vector2.right * hor/13f * facingRight);
 			transform.Translate (Vector2.up * vert/13f);
 		}
-
+		else
+			playerAnim.SetBool("walking", false);
 		//////////////////////////////////////////
 
 		//Punching + Kicking//////////////////////////
 
-		punchTimeout-=Time.deltaTime;
-		if (Input.GetKeyDown (KeyCode.X) && !kicking) {
-			punchTimeout = punchTimeoutLimit;
-		}
-
-		if (punchTimeout > 0) {
-			if (punchDelayCountdown <= 0) {
-				punching = true;
-				timeOfPunch = Time.time;
-				punchDelayCountdown = punchDelay;
-				playerAnim.SetBool ("punching", true);
-				punchColl.enabled = true;
-				punchMesh.enabled = true;
-			
-				//Special Effects!
-				punchEffect.Play ();
-			}
-		} else {
-			
-			punching = false;
-			playerAnim.SetBool ("punching", false);
-		}
-
-		if (punchDuration + timeOfPunch <= Time.time) {
-			punchColl.enabled = false;
-			punchMesh.enabled = false;
-		}
-	
-		punchDelayCountdown-=Time.deltaTime;
-		/*
-		if (punching && punchTime > 0) {
-			punchTime -= Time.deltaTime;
-			//Turns off Kick
-			if(punchTime < .7f){
-				kickColl.enabled = false;
-				kickMesh.enabled = false;
-			}
-			//Reverts Timescale
-			if(punchTime < .9f && kickMesh.enabled == true){
-				Time.timeScale = 1f;
-				kickColl.enabled = true;
-			}
-		}
-		//Finish Punch
-		else if (punching && punchTime <= 0 ){
-			punchTime = .1f;
-			punchColl.enabled = false;
-			punchMesh.enabled = false;
-			punching = false;
-			playerAnim.SetBool("punching",false);
-			
-			//playerAnim.SetTrigger ("idle");
-			//Debug.Log("Stop");
-		}
-		*/
-
-
-
-		//Allows us to kick stuff
-		if (Input.GetKeyDown (KeyCode.Z) && !kicking && !punching) {
-			kicking = true;
-			kickColl.enabled = true;
-			kickMesh.enabled = true;
-
-			kickEffect.Play ();
-		}
-		/*
-		//Kicks, then stops kicking
-		if (kicking) {
-			playerAnim.SetTrigger ("kick");
-			kicking = false;
-		}
-
-		//Decides whether to do punch1 or punch2 (both the same gameplay wise)
-		if (punching && punch1) {
-			playerAnim.SetTrigger("punch1");
-			punch1 = false;
-			punching = false;
-
-		}
-		else if (punching && !punch1) {
-			playerAnim.SetTrigger("punch2");
-			punch1 = true;
-			punching = false;
-		}
-		*/
-
 		//Punching Animations
-		/*
 		if (punching && comboCounter == 1) {
-			playerAnim.SetTrigger ("punch1");
+			playerAnim.SetBool ("punch1", true);
 		} else if (punching && comboCounter == 2) {
-			playerAnim.SetTrigger ("punch2");
+			playerAnim.SetBool ("punch2", true);
 		} else if (punching && kickMesh.enabled == true) {
-			playerAnim.SetTrigger ("kick"); 
-		} 
-
-		if (comboCounter == 1 && punch1ready) {
-			comboResetBool = true;
-			playerAnim.SetTrigger ("punch1");
-			punch1ready = false;
-		} else if (comboCounter == 2 && punch2ready) {
-			playerAnim.SetTrigger ("punch2");
-			punch2ready = false;
-		} else if (kickMesh.enabled == true && kickReady) {
-			playerAnim.SetTrigger ("kick"); 
-			kickReady = false;
-		} 
-		if (comboCounter == 0 && comboResetBool) {
-			playerAnim.SetTrigger ("comboReset");
-			punch1ready = true;
-			punch2ready = true;
-			kickReady = true;
-			comboResetBool=false;
+			playerAnim.SetBool ("kick", true); 
+		} /*else if (!punching) {
+			playerAnim.SetBool ("punch1", false);
+			playerAnim.SetBool ("punch2", false);
+			playerAnim.SetBool ("kick", false); 
+		}*/
+		else if (playerAnim.GetBool("walking") == false){
+			playerAnim.SetBool ("kick", false);
+			//playerAnim.SetBool ("idle", true);
+			playerAnim.SetBool ("punch1", false);
+			playerAnim.SetBool ("punch2", false);
 		}
 			
 
@@ -253,8 +141,6 @@ public class PlayerController : MonoBehaviour {
 			punchColl.enabled = false;
 			punchMesh.enabled = false;
 			punching = false;
-
-			//playerAnim.SetTrigger ("idle");
 			//Debug.Log("Stop");
 		}
 		//Combo buffer decrement
@@ -266,8 +152,6 @@ public class PlayerController : MonoBehaviour {
 			comboBuffer = 0;
 			comboCounter = 0;
 		}
-
-		*/
 
 		//Debug.Log ("ComboBuffer is: " + comboBuffer + " Combocount is: " + comboCounter);
 		//////////////////////////////////////////
