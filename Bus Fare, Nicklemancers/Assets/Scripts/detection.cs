@@ -103,7 +103,7 @@ public class detection : MonoBehaviour {
 
 
 		//Debug.Log (dist);
-		if (dist <= detect && manager.numChasers <= manager.chaseMax && npcCoins.aggressed) {
+		if (dist <= detect && manager.numChasers <= manager.chaseMax && npcCoins.aggressed && !chasing) {
 			chasing = true;
 			manager.numChasers += 1;
 
@@ -142,6 +142,8 @@ public class detection : MonoBehaviour {
 
 			////////////////KARL, NPC DIES HERE, ADD ANIMATION REFERENCE HERE/////////////
 			NPC1anim.SetBool ("NPC1dead",true);
+			if(chasing)
+				manager.numChasers -= 1;
 			chasing = false;
 
 			if (keepCheckingForLTZero) {
