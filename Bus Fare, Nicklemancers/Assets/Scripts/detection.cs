@@ -27,7 +27,7 @@ public class detection : MonoBehaviour {
 
 	public float time;
 	private float startTime;
-	private float lifetime = 6f;
+	private float lifetime = 3f;
 	private float flickrTime = 1f;
 	private SpriteRenderer sprite_renderer;
 	private NPCCoins npcCoins;
@@ -99,17 +99,20 @@ public class detection : MonoBehaviour {
 
 
 		if (npcCoins.coins <= 0 ){
+
+			////////////////KARL, NPC DIES HERE, ADD ANIMATION REFERENCE HERE/////////////
 			chasing = false;
+
 			if (keepCheckingForLTZero) {
 				startTime = Time.time;
 				keepCheckingForLTZero = false;
 			}
 			Vector2 deathForce;
 			if (right){
-				deathForce = new Vector2 (-3f, 0f);
+				deathForce = new Vector2 (-.2f, 0f);
 			}
 			else 
-				deathForce = new Vector2 (3f, 0f);
+				deathForce = new Vector2 (.2f, 0f);
 
 			GetComponent<Rigidbody2D>().AddForce(deathForce, ForceMode2D.Force);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;
