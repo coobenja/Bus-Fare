@@ -7,6 +7,7 @@ public class detection : MonoBehaviour {
 
 	private bool right = true;
 
+	public Transform otherTrans;
 	public Transform player;
 	public BoxCollider2D punchArm;
 	[HideInInspector]
@@ -25,13 +26,23 @@ public class detection : MonoBehaviour {
 
 	public bool chasing;
 
-	public float time;
+	private float time;
 	private float startTime;
-	private float lifetime = 3f;
-	private float flickrTime = 1f;
+	private float lifetime = 5f;
+	private float flickrTime = 2f;
 	private SpriteRenderer sprite_renderer;
 	private NPCCoins npcCoins;
 	private bool keepCheckingForLTZero = true;
+	private float startCoins;
+
+	private bool keepCheckingForZero = true;
+	private float startTime2;
+	public float waitTime;
+	private float time2;
+
+	public bool aggressed = false;
+	private bool other;
+
 
 
 
@@ -41,16 +52,23 @@ public class detection : MonoBehaviour {
 	void Start(){
 		manager = GameObject.Find("Manager").GetComponent<Manager>();
 		player = GameObject.Find ("Player").transform;
+		other = GameObject.Find ("NPC").GetComponent<detection>().aggressed;
+		otherTrans = GameObject.Find ("NPC").transform;
 		npcCoins = GetComponent<NPCCoins>();
 
 		//Punching arm set up
 		punchArm = transform.Find ("Arm").GetComponent<BoxCollider2D> ();
 		punchArm.enabled = false;
 
+		//initial amount of coins
+		startCoins = npcCoins.coins;
+
+
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
+
 
 		//Facing left and right
 		if (player.position.x - transform.position.x > 0 && !right) {
@@ -64,16 +82,27 @@ public class detection : MonoBehaviour {
 		//Ignore Other Character Collisions
 		Physics2D.IgnoreLayerCollision (8,8);
 
+
+		//One NPC has been Aggressed, one more may join him in the fight
+		if (npcCoins.coins < startCoins) {
+			aggressed = true;
+		}
+
+
 		//Movement/Chasing Logic///////////////////
 		float dist = Vector2.Distance(player.position, transform.position);
+
+
 		//Debug.Log (dist);
 		 if (dist <= detect && manager.numChasers < manager.chaseMax) {
 			chasing = true;
 			manager.numChasers += 1;
+
 		}
 
 		if (dist >= escape && chasing) {
 			chasing = false;
+			aggressed = false;
 			manager.numChasers -= 1;
 		}
 
@@ -109,10 +138,10 @@ public class detection : MonoBehaviour {
 			}
 			Vector2 deathForce;
 			if (right){
-				deathForce = new Vector2 (-.2f, 0f);
+				deathForce = new Vector2 (-10f, 0f);
 			}
 			else 
-				deathForce = new Vector2 (.2f, 0f);
+				deathForce = new Vector2 (10f, 0f);
 
 			GetComponent<Rigidbody2D>().AddForce(deathForce, ForceMode2D.Force);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;
@@ -137,6 +166,25 @@ public class detection : MonoBehaviour {
 				else 
 					Destroy(gameObject);
 		}//if
+
+		//NPC Attacking Script
+		if(dist < 2f) {
+			if (keepCheckingForZero) {
+				startTime2 = Time.time;
+				keepCheckingForLTZero = false;
+			}
+			Debug.Log (startTime2 + waitTime - Time.time );
+			
+			if (startTime + waitTime - Time.time <= 0 && Time.time > time2) {
+				
+				punchArm.enabled = true;
+				time2 = Time.time + 3f;
+			}
+			else{
+				punchArm.enabled = false;
+			}
+		}
+
 	}//void update
 
 	void Flip(){
