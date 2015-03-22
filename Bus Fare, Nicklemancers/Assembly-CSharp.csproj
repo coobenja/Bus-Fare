@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\ZTranslate.cs" />
      <Compile Include="Assets\Scripts\detection.cs" />
      <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
+     <Compile Include="Assets\gamecontroller.cs" />
      <None Include="Assets\XInputDotNet\MITLicense.txt" />
      <None Include="Assets\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">

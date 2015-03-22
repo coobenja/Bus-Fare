@@ -71,9 +71,9 @@ public class detection : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		if (superAggressive) {
+		/*if (superAggressive) {
 			npcCoins.aggressed = true;
-		}
+		}*/
 		if (npcCoins.aggressed)
 			NPC1anim.SetBool ("NPC1aggro", true);
 
