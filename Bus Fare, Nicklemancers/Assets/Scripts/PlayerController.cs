@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
 
 public class PlayerController : MonoBehaviour {
 	
@@ -56,6 +57,12 @@ public class PlayerController : MonoBehaviour {
 	public AudioSource punchSFX2;
 	public AudioSource gruntSFX1;
 	public AudioSource gruntSFX2;
+
+	//XIDN
+	
+	public PlayerIndex playerIndex;
+	public GamePadState state;
+	private GamePadState prevState;
 	
 	
 	// Use this for initialization
@@ -77,17 +84,27 @@ public class PlayerController : MonoBehaviour {
 		kickColl.enabled = false;
 		
 		playerAnim = transform.Find ("PCSprite").GetComponent<Animator> ();
+
+		//playerIndex = (PlayerIndex)0;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		//prevState = state;
+		//state = GamePad.GetState(playerIndex);
 		
 		//Ignore Other Character Collisions
 		Physics2D.IgnoreLayerCollision (8,8);
 		
 		//Player Movement/////////////////////////
-		hor = Input.GetAxis ("Horizontal");
-		vert = Input.GetAxis ("Vertical");
+		//if (state.IsConnected) {
+		//	hor = state.ThumbSticks.Left.X;
+		//	vert = state.ThumbSticks.Left.Y;
+		//} else {
+			hor = Input.GetAxis ("Horizontal");
+			vert = Input.GetAxis ("Vertical");
+		//}
 		
 		if (punchTime <= .3f) {
 			//playerAnim.SetTrigger("walking");
