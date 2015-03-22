@@ -8,7 +8,14 @@ public class detection : MonoBehaviour {
 	private bool right = true;
 
 	public Transform player;
-	public Transform fist;
+	public BoxCollider2D punchArm;
+	[HideInInspector]
+	public float windUpTimer = 0;
+	[HideInInspector]
+	public bool windingUp = false;
+	[HideInInspector]
+	public float windUpLimit = 1f;
+
 	public float detect;
 	public float escape;
 	private float speed = .035f;
@@ -36,24 +43,22 @@ public class detection : MonoBehaviour {
 		player = GameObject.Find ("Player").transform;
 		npcCoins = GetComponent<NPCCoins>();
 
+		//Punching arm set up
+		punchArm = transform.Find ("Arm").GetComponent<BoxCollider2D> ();
+		punchArm.enabled = false;
 
 	}
 
-	/*void OnCollisionStay2D( Collision2D other) {
-		if(other.gameObject.tag == "NPC") {
-			if (other.gameObjectameObject.Find("NPC").GetComponent<detection>().chasing) //will check if true
-			other.gameObject.GetComponent("detection")();
-			if(other.*/
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		//Facing left and right
 		if (player.position.x - transform.position.x > 0 && !right) {
 			Flip ();
-			Debug.Log("Flip right");
+			//Debug.Log("Flip right");
 		} else if (player.position.x - transform.position.x <= 0 && right) {
 			Flip ();
-			Debug.Log("Flip left");
+			//Debug.Log("Flip left");
 		}
 
 		//Ignore Other Character Collisions
@@ -77,6 +82,12 @@ public class detection : MonoBehaviour {
 		}
 		//////////////////////////////////////////
 
+		//Winding up and hittin the player/////////
+
+
+
+		///////////////////////////////////////////
+
 		//Hitstun Logic///////////////////////////
 
 		if (hitStun && stunTime > 0) {
@@ -86,29 +97,8 @@ public class detection : MonoBehaviour {
 			hitStun = false;
 		}
 
-		/////////////////////////////////////////
 
-		//Death and Taxes////////////////////////
-
-		/*if (money <= 0) {
-			manager.numChasers -= 1;
-			Destroy(this);
-		}
-		//Debug.Log (money);
-
-		////////////////////////////////////////
-	}
-
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == "Fist") {
-			hitStun = true;
-			money -= 5;
-		} else if (other.gameObject.tag == "Foot") {
-			hitStun = true;
-			money -= 10;
-		}*/
-
-	if (npcCoins.coins <= 0 ){
+		if (npcCoins.coins <= 0 ){
 			chasing = false;
 			if (keepCheckingForLTZero) {
 				startTime = Time.time;
@@ -120,8 +110,6 @@ public class detection : MonoBehaviour {
 			}
 			else 
 				deathForce = new Vector2 (3f, 0f);
-
-
 
 			GetComponent<Rigidbody2D>().AddForce(deathForce, ForceMode2D.Force);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;
@@ -135,20 +123,18 @@ public class detection : MonoBehaviour {
 						if (sprite_renderer.enabled){
 							Debug.Log(sprite_renderer.enabled);
 							sprite_renderer.enabled = false;
-						}
+						}//if
 						else if (!sprite_renderer.enabled) {
 							sprite_renderer.enabled =true ;
 							Debug.Log (sprite_renderer.enabled);
-						}
+						}//else if
 						
-					}
-				}
-				else {
+					}//if
+				}//if
+				else 
 					Destroy(gameObject);
-			}
-
-		}
-	}
+		}//if
+	}//void update
 
 	void Flip(){
 		// Switch the way the player is labelled as facing

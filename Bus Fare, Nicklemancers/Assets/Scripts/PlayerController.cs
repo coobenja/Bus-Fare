@@ -195,7 +195,9 @@ public class PlayerController : MonoBehaviour {
 
 		}
 		if(other.gameObject.tag == "NPCPunch") {
+
 			Rigidbody2D deathCash;
+
 			if (coins < 25) {
 				coins = coins - 15;
 				if (coins > 10) {
@@ -218,7 +220,7 @@ public class PlayerController : MonoBehaviour {
 				deathCash = Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
 				deathCash = Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
 			}
-			Debug.Log ("Coins are: " + coins);
+			//Debug.Log ("Coins are: " + coins);
 		}
 		//Check for player death
 		if (coins <= 0) {

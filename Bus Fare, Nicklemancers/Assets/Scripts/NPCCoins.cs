@@ -7,6 +7,8 @@ public class NPCCoins : MonoBehaviour {
 	public GameObject dime;
 	public GameObject quarter;
 
+	public detection Detection;
+
 	public float coins;
 	private bool chance;
 	// Use this for initialization
@@ -14,11 +16,15 @@ public class NPCCoins : MonoBehaviour {
 		coins = Random.Range (2, 30);
 		coins = coins * 5;
 		Debug.Log (coins);
+		Detection = gameObject.GetComponent<detection> ();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		chance = Random.value > .50;
 		if (coins > 0) {
+			//Hitstun
+			Detection.hitStun = true;
+
 			if (other.gameObject.tag == "Foot") {
 				coins = coins - 25;
 				Rigidbody2D deathCash;
