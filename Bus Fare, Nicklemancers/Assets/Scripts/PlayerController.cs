@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	public float comboBuffer = .5f;
 	public int comboCounter = 0;
 
-	public int money = 0;
+	public int coins = 15;
 
 	private bool punching = false;
 	public BoxCollider2D punchColl;
@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour {
 	public MeshRenderer kickMesh;
 	public ParticleSystem kickEffect;
 	public ParticleSystem punchEffect;
+
+	public GameObject nickel;
+	public GameObject dime;
+	public GameObject quarter;
 
 	public Animator playerAnim;
 
@@ -177,19 +181,43 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (other.gameObject.name == "dime(Clone)") {
 			Destroy(other.gameObject);
-			money += 10;
+			coins += 10;
 			Debug.Log("Bling");
 		}
 		if (other.gameObject.name == "nickel(Clone)") {
 			Destroy(other.gameObject);
-			money += 5;
+			coins += 5;
 			Debug.Log("Bling");
 		}
 		if (other.gameObject.name == "quarter(Clone)") {
 			Destroy(other.gameObject);
-			money += 25;
+			coins += 25;
 			Debug.Log("Bling");
 		}
+		/*if(other.gameObject.tag == "NPCPunch") {
+			if (coins < 25) {
+				coins = coins - 15;
+				if (coins > 10) {
+					Instantiate(nickel, transform.position, transform.rotation) as Rigidbody2D;
+				}
+			}
+			//gives off coins "proportional" to the amount you have
+			else if (coins < 75f) {
+				coins = coins - coins - 15;
+				Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
+				if (coins > 35f) {
+					Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
+				}
+			}
+			// gives off a lot of coins...
+			else {
+				coins = coins - (coins / 2f ) - 25f;
+				Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
+				Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
+				Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
+				Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
+			}
+		}*/
 
 	}
 

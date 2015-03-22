@@ -27,6 +27,7 @@ public class detection : MonoBehaviour {
 	private bool keepCheckingForLTZero = true;
 
 
+
 	//public GameObject manager;
 	public Manager manager;
 
