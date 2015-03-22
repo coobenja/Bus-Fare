@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\CameraTracking.cs" />
      <Compile Include="Assets\Scripts\CoinVelocity.cs" />
      <Compile Include="Assets\Scripts\GUIComponent.cs" />
+     <Compile Include="Assets\Scripts\HopeThisWorksGui.cs" />
      <Compile Include="Assets\Scripts\Manager.cs" />
      <Compile Include="Assets\Scripts\NPCCoins.cs" />
      <Compile Include="Assets\Scripts\NPCMove.cs" />
@@ -66,10 +67,10 @@
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>/Users/karl/Documents/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86/XInputDotNetPure.dll</HintPath>
+ <HintPath>/Users/Biowens/Pictures/My stuff probably/complete stuff/42hour 2015/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86/XInputDotNetPure.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>/Users/karl/Documents/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
+ <HintPath>/Users/Biowens/Pictures/My stuff probably/complete stuff/42hour 2015/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
