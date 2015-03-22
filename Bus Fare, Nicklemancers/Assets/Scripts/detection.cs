@@ -74,14 +74,18 @@ public class detection : MonoBehaviour {
 		if (superAggressive) {
 			npcCoins.aggressed = true;
 		}
+		if (npcCoins.aggressed)
+			NPC1anim.SetBool ("NPC1aggro", true);
 
 		//Facing left and right
-		if (player.position.x - transform.position.x > 0 && !right) {
-			Flip ();
-			//Debug.Log("Flip right");
-		} else if (player.position.x - transform.position.x <= 0 && right) {
-			Flip ();
-			//Debug.Log("Flip left");
+		if (npcCoins.aggressed) {
+			if (player.position.x - transform.position.x > 0 && !right) {
+				Flip ();
+				//Debug.Log("Flip right");
+			} else if (player.position.x - transform.position.x <= 0 && right) {
+				Flip ();
+				//Debug.Log("Flip left");
+			}
 		}
 
 		//Ignore Other Character Collisions
@@ -113,6 +117,9 @@ public class detection : MonoBehaviour {
 
 		if (chasing && !hitStun && dist > .9f) {
 			transform.position = Vector2.MoveTowards (transform.position, player.position, speed);
+			NPC1anim.SetBool ("NPC1walking", true);
+		}else{
+			NPC1anim.SetBool ("NPC1walking", false);
 		}
 		//////////////////////////////////////////
 
@@ -134,12 +141,15 @@ public class detection : MonoBehaviour {
 		if (npcCoins.coins <= 0) {
 
 			////////////////KARL, NPC DIES HERE, ADD ANIMATION REFERENCE HERE/////////////
+			NPC1anim.SetBool ("NPC1dead",true);
 			chasing = false;
 
 			if (keepCheckingForLTZero) {
 				startTime = Time.time;
 				keepCheckingForLTZero = false;
 			}
+			npcCoins.aggressed=false;
+			/*
 			Vector2 deathForce;
 			if (right) {
 				deathForce = new Vector2 (-7f, 0f);
@@ -148,6 +158,7 @@ public class detection : MonoBehaviour {
 
 			GetComponent<Rigidbody2D> ().AddForce (deathForce, ForceMode2D.Force);
 			GetComponent<Rigidbody2D> ().gravityScale = 0f;
+			*/
 		}
 			/*Debug.Log(startTime + lifetime - Time.time);
 				if(startTime + lifetime - Time.time > 0) {
@@ -181,11 +192,11 @@ public class detection : MonoBehaviour {
 				if (startTime2 + waitTime - Time.time <= 0 && Time.time > time2) {
 				
 					punchArm.enabled = true;
-					NPC1anim.SetBool ("NPC1punching",true);
+					NPC1anim.SetTrigger ("NPC1punch");
 					time2 = Time.time + punchSpeed;
 				} else {
 					punchArm.enabled = false;
-					NPC1anim.SetBool ("NPC1punching",false);
+					//NPC1anim.SetBool ("NPC1punching",false);
 				}
 			//punchArm.enabled = false;
 			if (superAggressive) {

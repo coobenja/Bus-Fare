@@ -10,6 +10,8 @@ public class CoinVelocity : MonoBehaviour {
 	private SpriteRenderer sprite_renderer;
 	private float lifetime = 7f;
 	private float flickrTime = 6.2f;
+	public AudioSource coinSFX;
+	private bool landed = false;
 	
 	//private float startHeight;
 	
@@ -23,10 +25,18 @@ public class CoinVelocity : MonoBehaviour {
 		GetComponent<CircleCollider2D> ().enabled = false;
 		startTime = Time.time;
 
+		coinSFX = GameObject.Find ("coinSFX1").GetComponent<AudioSource>();
+
 	}
 
 	void Update() {
 		if(transform.position.y <= (startHeight - .55f * Random.value)) {
+
+			//sfx
+			if(!landed){
+				coinSFX.Play();
+				landed = true;
+			}
 
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;

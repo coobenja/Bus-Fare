@@ -369,6 +369,8 @@ public class PlayerController : MonoBehaviour {
 			
 		}
 		if(other.gameObject.tag == "NPCPunch") {
+
+			punchSFX1.Play();
 			
 			Rigidbody2D deathCash;
 			
