@@ -8,7 +8,7 @@ public class HopeThisWorksGui : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerController = GameObject.Find("Player").GetComponent<PlayerController> ();
-		//gui.text = "It's $5.00 to ride the bus, if you have the money press 'R'.";
+		//gui.text = "It's $5.00 to ride the bus, if you have the money press 'B', for Bus.";
 	}
 	
 	// Update is called once per frame
@@ -21,7 +21,7 @@ public class HopeThisWorksGui : MonoBehaviour {
 			
 			if (Input.GetKeyDown(KeyCode.R)){
 				//gui.text = "You Have Stolen:" + playerController.coins + "cents";
-				Application.LoadLevel("Game Over");
+				Application.LoadLevel("GameOver");
 			}
 }
 }
