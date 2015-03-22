@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioSource gruntSFX1;
 	public AudioSource gruntSFX2;
 	public AudioSource coinPickupSFX;
+	public AudioSource OhNo;
 
 	//XIDN
 	
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour {
 		playerAnim = transform.Find ("PCSprite").GetComponent<Animator> ();
 
 		coinPickupSFX = GameObject.Find ("coinPickup").GetComponent<AudioSource> ();
+		coinPickupSFX = GameObject.Find ("OH NOOO").GetComponent<AudioSource> ();
 
 		//playerIndex = (PlayerIndex)0;
 	}
@@ -406,8 +408,10 @@ public class PlayerController : MonoBehaviour {
 		}
 		//Check for player death
 		if (coins <= 0) {
-			GetComponent<ParticleSystem>().Play();
-			Destroy(gameObject);
+			OhNo.Play();
+			Application.LoadLevel("Player");
+			//GetComponent<ParticleSystem>().Play();
+			//Destroy(gameObject);
 
 		}
 	}
