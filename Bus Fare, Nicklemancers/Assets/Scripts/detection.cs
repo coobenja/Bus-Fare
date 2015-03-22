@@ -114,7 +114,16 @@ public class detection : MonoBehaviour {
 				startTime = Time.time;
 				keepCheckingForLTZero = false;
 			}
-			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+			Vector2 deathForce;
+			if (right){
+				deathForce = new Vector2 (-3f, 0f);
+			}
+			else 
+				deathForce = new Vector2 (3f, 0f);
+
+
+
+			GetComponent<Rigidbody2D>().AddForce(deathForce, ForceMode2D.Force);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;
 				
 
