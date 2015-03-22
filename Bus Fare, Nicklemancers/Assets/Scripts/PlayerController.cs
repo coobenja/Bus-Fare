@@ -116,6 +116,17 @@ public class PlayerController : MonoBehaviour {
 		}
 	
 		punchDelayCountdown-=Time.deltaTime;
+
+		//Walking//
+
+		if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
+			playerAnim.SetBool ("walkingBool", true);
+		} else {
+			playerAnim.SetBool ("walkingBool", false);
+		}
+
+
+
 		/*
 		if (punching && punchTime > 0) {
 			punchTime -= Time.deltaTime;
