@@ -164,22 +164,23 @@ public class detection : MonoBehaviour {
 		}//if
 */
 			//NPC Attacking Script
-			if (dist < 2f) {
+			if (dist < 2f && npcCoins.aggressed) {
 				if (keepCheckingForZero) {
 					startTime2 = Time.time;
-					keepCheckingForLTZero = false;
+					keepCheckingForZero = false;
 				}
 				//Debug.Log (startTime2 + waitTime - Time.time );
 			
-				if (startTime + waitTime - Time.time <= 0 && Time.time > time2) {
+				if (startTime2 + waitTime - Time.time <= 0 && Time.time > time2) {
 				
 					punchArm.enabled = true;
-					NPC1anim.SetBool ("NPC1punching",true);
+					//NPC1anim.SetBool ("NPC1punching",true);
 					time2 = Time.time + punchSpeed;
 				} else {
 					punchArm.enabled = false;
-					NPC1anim.SetBool ("NPC1punching",false);
+					//NPC1anim.SetBool ("NPC1punching",false);
 				}
+			//punchArm.enabled = false;
 			}
 
 		}
