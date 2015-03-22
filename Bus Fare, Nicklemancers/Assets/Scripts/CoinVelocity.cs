@@ -8,8 +8,8 @@ public class CoinVelocity : MonoBehaviour {
 	private float startTime;
 	private float startHeight;
 	private SpriteRenderer sprite_renderer;
-	private float lifetime = 5f;
-	private float flickrTime = 3f;
+	private float lifetime = 7f;
+	private float flickrTime = 6.2f;
 	
 	//private float startHeight;
 	
@@ -26,7 +26,7 @@ public class CoinVelocity : MonoBehaviour {
 	}
 
 	void Update() {
-		if(transform.position.y <= (startHeight - 1f)) {
+		if(transform.position.y <= (startHeight - .55f * Random.value)) {
 
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 			GetComponent<Rigidbody2D>().gravityScale = 0f;
