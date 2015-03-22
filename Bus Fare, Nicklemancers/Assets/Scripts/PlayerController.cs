@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	public float comboBuffer = .5f;
 	public int comboCounter = 0;
 
-	public int coins = 15;
+	public int coins = 100;
 
 	private bool punching = false;
 	public BoxCollider2D punchColl;
