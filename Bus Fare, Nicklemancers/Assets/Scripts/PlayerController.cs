@@ -44,6 +44,12 @@ public class PlayerController : MonoBehaviour {
 	public float punchDuration = .2f;
 	private float timeOfPunch;
 
+	
+	public float kickDelay = 2f;
+	public float kickDelayCountdown=0;
+	public float kickDuration = .5f;
+	private float timeOfKick;
+	public float kickOffset = 1f;
 
 
 	// Use this for initialization
@@ -99,7 +105,7 @@ public class PlayerController : MonoBehaviour {
 				punchDelayCountdown = punchDelay;
 				playerAnim.SetBool ("punching", true);
 				punchColl.enabled = true;
-				punchMesh.enabled = true;
+				//punchMesh.enabled = true;
 			
 				//Special Effects!
 				punchEffect.Play ();
@@ -116,6 +122,28 @@ public class PlayerController : MonoBehaviour {
 		}
 	
 		punchDelayCountdown-=Time.deltaTime;
+
+		//Kick
+		if (Input.GetKeyDown (KeyCode.Z) && !kicking && !punching && kickDelayCountdown <= 0) {
+			kicking = true;
+			playerAnim.SetBool ("kicking", true);
+			timeOfKick = Time.time;
+			kickDelayCountdown = kickDelay;
+		}
+
+		if((timeOfKick+kickOffset)<=Time.time && kicking){
+			kickColl.enabled = true;
+			//kickMesh.enabled = true;
+			kickEffect.Play ();
+			kicking = false;
+			playerAnim.SetBool ("kicking",false);
+		}
+		
+		if ((kickDuration + timeOfKick) <= Time.time) {
+			kickColl.enabled = false;
+			kickMesh.enabled = false;
+		}
+		kickDelayCountdown -= Time.deltaTime;
 
 		//Walking//
 
@@ -157,13 +185,6 @@ public class PlayerController : MonoBehaviour {
 
 
 		//Allows us to kick stuff
-		if (Input.GetKeyDown (KeyCode.Z) && !kicking && !punching) {
-			kicking = true;
-			kickColl.enabled = true;
-			kickMesh.enabled = true;
-
-			kickEffect.Play ();
-		}
 		/*
 		//Kicks, then stops kicking
 		if (kicking) {
