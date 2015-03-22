@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioSource punchSFX2;
 	public AudioSource gruntSFX1;
 	public AudioSource gruntSFX2;
+	public AudioSource coinPickupSFX;
 
 	//XIDN
 	
@@ -84,6 +85,8 @@ public class PlayerController : MonoBehaviour {
 		kickColl.enabled = false;
 		
 		playerAnim = transform.Find ("PCSprite").GetComponent<Animator> ();
+
+		coinPickupSFX = GameObject.Find ("coinPickup").GetComponent<AudioSource> ();
 
 		//playerIndex = (PlayerIndex)0;
 	}
@@ -354,16 +357,19 @@ public class PlayerController : MonoBehaviour {
 				AddForce(new Vector2(10f * facingRight, 0), ForceMode2D.Impulse);
 		}
 		if (other.gameObject.name == "dime(Clone)") {
+			coinPickupSFX.Play ();
 			Destroy(other.gameObject);
 			coins += 10;
 			
 		}
 		if (other.gameObject.name == "nickel(Clone)") {
+			coinPickupSFX.Play ();
 			Destroy(other.gameObject);
 			coins += 5;
 			
 		}
 		if (other.gameObject.name == "quarter(Clone)") {
+			coinPickupSFX.Play ();
 			Destroy(other.gameObject);
 			coins += 25;
 			
