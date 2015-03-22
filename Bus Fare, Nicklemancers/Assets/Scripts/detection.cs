@@ -61,7 +61,7 @@ public class detection : MonoBehaviour {
 		//initial amount of coins
 		startCoins = npcCoins.coins;
 		if (superAggressive) {
-			punchArm.enabled = true;
+			 npcCoins.aggressed = true;
 		}
 
 
@@ -72,7 +72,7 @@ public class detection : MonoBehaviour {
 	void FixedUpdate () {
 
 		if (superAggressive) {
-			punchArm.enabled = true;
+			npcCoins.aggressed = true;
 		}
 
 		//Facing left and right
@@ -189,7 +189,7 @@ public class detection : MonoBehaviour {
 				}
 			//punchArm.enabled = false;
 			if (superAggressive) {
-				punchArm.enabled = true;
+				npcCoins.aggressed = true;
 			}
 
 			}
