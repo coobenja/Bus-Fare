@@ -9,6 +9,8 @@ public class NPCCoins : MonoBehaviour {
 
 	public detection Detection;
 
+	public bool aggressed = false;
+
 	public float coins;
 	private bool chance;
 	// Use this for initialization
@@ -26,12 +28,20 @@ public class NPCCoins : MonoBehaviour {
 			Detection.hitStun = true;
 
 			if (other.gameObject.tag == "Foot") {
+				aggressed = true;
 				coins = coins - 25;
 				Rigidbody2D deathCash;
-				deathCash = Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
+				if(chance) {
+					deathCash = Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
+				} else {
+					deathCash = Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
+					deathCash = Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
+					deathCash = Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
+				}
 
 			}
 			if (other.gameObject.tag == "Fist") {
+				aggressed = true;
 				if (chance) {
 					coins = coins - 5;
 					Rigidbody2D deathCash;
