@@ -25,18 +25,13 @@ public class detection : MonoBehaviour {
 
 	public bool chasing;
 
-	private float time;
+	public float time;
 	private float startTime;
 	private float lifetime = 6f;
 	private float flickrTime = 1f;
 	private SpriteRenderer sprite_renderer;
 	private NPCCoins npcCoins;
 	private bool keepCheckingForLTZero = true;
-
-	private bool keepCheckingForZero = true;
-	private float startTime2;
-	public float waitTime;
-	private float time2;
 
 
 
@@ -139,23 +134,6 @@ public class detection : MonoBehaviour {
 				else 
 					Destroy(gameObject);
 		}//if
-
-		if(dist < 2f) {
-			if (keepCheckingForZero) {
-				startTime2 = Time.time;
-				keepCheckingForLTZero = false;
-			}
-			Debug.Log (startTime2 + waitTime - Time.time );
-			
-			if (startTime + waitTime - Time.time <= 0 && Time.time > time2) {
-
-				punchArm.enabled = true;
-				time2 = Time.time + 3f;
-			}
-			else{
-				punchArm.enabled = false;
-			}
-		}
 	}//void update
 
 	void Flip(){

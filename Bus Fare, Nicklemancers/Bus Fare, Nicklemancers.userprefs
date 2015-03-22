@@ -1,8 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\detection.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets/Scripts/PlayerController.cs" Line="146" Column="21" />
+=======
+      <File FileName="Assets\Scripts\detection.cs" Line="65" Column="19" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="381" Column="1" />
+>>>>>>> origin/master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
