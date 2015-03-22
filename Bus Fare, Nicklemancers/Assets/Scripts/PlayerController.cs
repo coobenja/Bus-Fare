@@ -408,6 +408,7 @@ public class PlayerController : MonoBehaviour {
 		if (coins <= 0) {
 			GetComponent<ParticleSystem>().Play();
 			Destroy(gameObject);
+
 		}
 	}
 	
