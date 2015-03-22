@@ -40,6 +40,7 @@ public class detection : MonoBehaviour {
 	public float waitTime;
 	private float time2;
 	public float punchSpeed=1f;
+	public bool superAggressive = false;
 
 	public Animator NPC1anim;
 
@@ -59,6 +60,9 @@ public class detection : MonoBehaviour {
 
 		//initial amount of coins
 		startCoins = npcCoins.coins;
+		if (superAggressive) {
+			punchArm.enabled = true;
+		}
 
 
 
@@ -67,6 +71,9 @@ public class detection : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
+		if (superAggressive) {
+			punchArm.enabled = true;
+		}
 
 		//Facing left and right
 		if (player.position.x - transform.position.x > 0 && !right) {
@@ -174,13 +181,17 @@ public class detection : MonoBehaviour {
 				if (startTime2 + waitTime - Time.time <= 0 && Time.time > time2) {
 				
 					punchArm.enabled = true;
-					//NPC1anim.SetBool ("NPC1punching",true);
+					NPC1anim.SetBool ("NPC1punching",true);
 					time2 = Time.time + punchSpeed;
 				} else {
 					punchArm.enabled = false;
-					//NPC1anim.SetBool ("NPC1punching",false);
+					NPC1anim.SetBool ("NPC1punching",false);
 				}
 			//punchArm.enabled = false;
+			if (superAggressive) {
+				punchArm.enabled = true;
+			}
+
 			}
 
 		}
