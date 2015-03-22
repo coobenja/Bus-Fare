@@ -25,6 +25,9 @@ public class NPCCoins : MonoBehaviour {
 		chance = Random.value > .50;
 		if (coins > 0) {
 			//Hitstun
+			if(Detection.hitStun == true){
+				Detection.stunTime = 1f;
+			}
 			Detection.hitStun = true;
 
 			if (other.gameObject.tag == "Foot") {
