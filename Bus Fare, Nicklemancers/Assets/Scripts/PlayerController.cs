@@ -406,6 +406,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		//Check for player death
 		if (coins <= 0) {
+			GetComponent<ParticleSystem>().Play();
 			Destroy(gameObject);
 		}
 	}
