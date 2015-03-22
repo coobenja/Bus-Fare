@@ -181,11 +181,11 @@ public class detection : MonoBehaviour {
 				if (startTime2 + waitTime - Time.time <= 0 && Time.time > time2) {
 				
 					punchArm.enabled = true;
-					NPC1anim.SetBool ("NPC1punching",true);
+					//NPC1anim.SetBool ("NPC1punching",true);
 					time2 = Time.time + punchSpeed;
 				} else {
 					punchArm.enabled = false;
-					NPC1anim.SetBool ("NPC1punching",false);
+					//NPC1anim.SetBool ("NPC1punching",false);
 				}
 			//punchArm.enabled = false;
 			if (superAggressive) {
