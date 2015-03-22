@@ -182,43 +182,48 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.name == "dime(Clone)") {
 			Destroy(other.gameObject);
 			coins += 10;
-			Debug.Log("Bling");
+
 		}
 		if (other.gameObject.name == "nickel(Clone)") {
 			Destroy(other.gameObject);
 			coins += 5;
-			Debug.Log("Bling");
+
 		}
 		if (other.gameObject.name == "quarter(Clone)") {
 			Destroy(other.gameObject);
 			coins += 25;
-			Debug.Log("Bling");
+
 		}
-		/*if(other.gameObject.tag == "NPCPunch") {
+		if(other.gameObject.tag == "NPCPunch") {
+			Rigidbody2D deathCash;
 			if (coins < 25) {
 				coins = coins - 15;
 				if (coins > 10) {
-					Instantiate(nickel, transform.position, transform.rotation) as Rigidbody2D;
+					deathCash = Instantiate(nickel, transform.position, transform.rotation) as Rigidbody2D;
 				}
 			}
 			//gives off coins "proportional" to the amount you have
-			else if (coins < 75f) {
+			else if (coins < 75) {
 				coins = coins - coins - 15;
-				Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
-				if (coins > 35f) {
-					Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
+				deathCash = Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
+				if (coins > 35) {
+					deathCash = Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
 				}
 			}
 			// gives off a lot of coins...
 			else {
-				coins = coins - (coins / 2f ) - 25f;
-				Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
-				Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
-				Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
-				Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
+				coins = coins - 55;
+				deathCash = Instantiate (quarter, transform.position, transform.rotation) as Rigidbody2D;
+				deathCash = Instantiate (dime, transform.position, transform.rotation) as Rigidbody2D;
+				deathCash = Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
+				deathCash = Instantiate (nickel, transform.position, transform.rotation) as Rigidbody2D;
 			}
-		}*/
-
+			Debug.Log ("Coins are: " + coins);
+		}
+		//Check for player death
+		if (coins <= 0) {
+			Destroy(gameObject);
+		}
 	}
 
 
