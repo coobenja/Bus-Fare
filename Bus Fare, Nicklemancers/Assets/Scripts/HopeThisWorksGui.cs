@@ -19,12 +19,13 @@ public class HopeThisWorksGui : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other) {
 		if(other.gameObject.tag == "Player" && playerController.coins > 500){
 			
-			if (Input.GetKeyDown(KeyCode.R)){
+			if (Input.GetKeyDown(KeyCode.B)){
+				Debug.Log ("going off");
 				//gui.text = "You Have Stolen:" + playerController.coins + "cents";
 				Application.LoadLevel("GameOver");
 			}
-}
-}
+		}
+	}
 }
 
 
