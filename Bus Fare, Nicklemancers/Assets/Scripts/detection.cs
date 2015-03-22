@@ -193,7 +193,7 @@ public class detection : MonoBehaviour {
 				}
 				//Debug.Log (startTime2 + waitTime - Time.time );
 			
-				if (startTime2 + waitTime - Time.time <= 0 && Time.time > time2 && !hitStun) {
+				if (startTime2 + waitTime - Time.time <= 0 && Time.time > time2 /*&& !hitStun*/) {
 				
 					punchArm.enabled = true;
 					NPC1anim.SetTrigger ("NPC1punch");
