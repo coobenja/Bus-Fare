@@ -22,7 +22,8 @@ public class detection : MonoBehaviour {
 	private float speed = .035f;
 
 	public bool hitStun;
-	private float stunTime = .15f;
+	[HideInInspector]
+	public float stunTime = 1f;
 
 	public bool chasing;
 
@@ -133,8 +134,9 @@ public class detection : MonoBehaviour {
 
 		if (hitStun && stunTime > 0) {
 			stunTime -= Time.deltaTime;
+			Debug.Log ("Hitstun of: " + stunTime);
 		} else if (hitStun && stunTime <= 0) {
-			stunTime = .15f;
+			stunTime = 1f;
 			hitStun = false;
 		}
 
@@ -191,7 +193,7 @@ public class detection : MonoBehaviour {
 				}
 				//Debug.Log (startTime2 + waitTime - Time.time );
 			
-				if (startTime2 + waitTime - Time.time <= 0 && Time.time > time2) {
+				if (startTime2 + waitTime - Time.time <= 0 && Time.time > time2 && !hitStun) {
 				
 					punchArm.enabled = true;
 					NPC1anim.SetTrigger ("NPC1punch");
