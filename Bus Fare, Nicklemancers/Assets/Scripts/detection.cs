@@ -39,6 +39,9 @@ public class detection : MonoBehaviour {
 	private float startTime2;
 	public float waitTime;
 	private float time2;
+	public float punchSpeed=1f;
+
+	public Animator NPC1anim;
 
 
 
@@ -121,7 +124,7 @@ public class detection : MonoBehaviour {
 			hitStun = false;
 		}
 
-		if (npcCoins.coins <= 0 ){
+		if (npcCoins.coins <= 0) {
 
 			////////////////KARL, NPC DIES HERE, ADD ANIMATION REFERENCE HERE/////////////
 			chasing = false;
@@ -131,15 +134,14 @@ public class detection : MonoBehaviour {
 				keepCheckingForLTZero = false;
 			}
 			Vector2 deathForce;
-			if (right){
+			if (right) {
 				deathForce = new Vector2 (-7f, 0f);
-			}
-			else 
+			} else 
 				deathForce = new Vector2 (7f, 0f);
 
-			GetComponent<Rigidbody2D>().AddForce(deathForce, ForceMode2D.Force);
-			GetComponent<Rigidbody2D>().gravityScale = 0f;
-				
+			GetComponent<Rigidbody2D> ().AddForce (deathForce, ForceMode2D.Force);
+			GetComponent<Rigidbody2D> ().gravityScale = 0f;
+		}
 			/*Debug.Log(startTime + lifetime - Time.time);
 				if(startTime + lifetime - Time.time > 0) {
 					if (startTime + flickrTime - Time.time <= 0 && Time.time > time) {
@@ -161,25 +163,27 @@ public class detection : MonoBehaviour {
 					Destroy(gameObject);
 		}//if
 */
-		//NPC Attacking Script
-		if(dist < 2f) {
-			if (keepCheckingForZero) {
-				startTime2 = Time.time;
-				keepCheckingForLTZero = false;
-			}
-			//Debug.Log (startTime2 + waitTime - Time.time );
+			//NPC Attacking Script
+			if (dist < 2f) {
+				if (keepCheckingForZero) {
+					startTime2 = Time.time;
+					keepCheckingForLTZero = false;
+				}
+				//Debug.Log (startTime2 + waitTime - Time.time );
 			
-			if (startTime + waitTime - Time.time <= 0 && Time.time > time2) {
+				if (startTime + waitTime - Time.time <= 0 && Time.time > time2) {
 				
-				punchArm.enabled = true;
-				time2 = Time.time + 3f;
+					punchArm.enabled = true;
+					NPC1anim.SetBool ("NPC1punching",true);
+					time2 = Time.time + punchSpeed;
+				} else {
+					punchArm.enabled = false;
+					NPC1anim.SetBool ("NPC1punching",false);
+				}
 			}
-			else{
-				punchArm.enabled = false;
-			}
-		}
 
-	}//void update
+		}
+	//void update
 	
 	void Flip(){
 		// Switch the way the player is labelled as facing
