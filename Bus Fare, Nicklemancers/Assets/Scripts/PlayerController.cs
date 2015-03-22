@@ -51,6 +51,12 @@ public class PlayerController : MonoBehaviour {
 	private float timeOfKick;
 	public float kickOffset = 1f;
 
+	public AudioSource kickSFX;
+	public AudioSource punchSFX1;
+	public AudioSource punchSFX2;
+	public AudioSource gruntSFX1;
+	public AudioSource gruntSFX2;
+
 
 	// Use this for initialization
 	void Start () {
@@ -109,6 +115,7 @@ public class PlayerController : MonoBehaviour {
 			
 				//Special Effects!
 				punchEffect.Play ();
+				punchSFX1.Play();
 			}
 		} else {
 			
@@ -135,6 +142,8 @@ public class PlayerController : MonoBehaviour {
 			kickColl.enabled = true;
 			//kickMesh.enabled = true;
 			kickEffect.Play ();
+			kickSFX.Play();
+			gruntSFX2.Play();
 			kicking = false;
 			playerAnim.SetBool ("kicking",false);
 		}
