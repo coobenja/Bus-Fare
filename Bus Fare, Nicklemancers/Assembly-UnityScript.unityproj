@@ -54,17 +54,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
-<<<<<<< HEAD
- <HintPath>/Users/Biowens/Pictures/My stuff probably/complete stuff/42hour 2015/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86/XInputDotNetPure.dll</HintPath>
+ <HintPath>C:/Users/Karl/Documents/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86/XInputDotNetPure.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>/Users/Biowens/Pictures/My stuff probably/complete stuff/42hour 2015/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
-=======
- <HintPath>C:/Users/Ben/Documents/GitHub/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86/XInputDotNetPure.dll</HintPath>
- </Reference>
- <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/Ben/Documents/GitHub/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
->>>>>>> FETCH_HEAD
+ <HintPath>C:/Users/Karl/Documents/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

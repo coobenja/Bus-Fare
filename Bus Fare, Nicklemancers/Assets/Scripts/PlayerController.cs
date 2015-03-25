@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour {
 	public PlayerIndex playerIndex;
 	public GamePadState state;
 	private GamePadState prevState;
+
+	public bool OHNOOOmode = false;
 	
 	
 	// Use this for initialization
@@ -88,7 +90,11 @@ public class PlayerController : MonoBehaviour {
 		playerAnim = transform.Find ("PCSprite").GetComponent<Animator> ();
 
 		coinPickupSFX = GameObject.Find ("coinPickup").GetComponent<AudioSource> ();
-		coinPickupSFX = GameObject.Find ("OH NOOO").GetComponent<AudioSource> ();
+		if (OHNOOOmode) {
+			coinPickupSFX = GameObject.Find ("OH NOOO").GetComponent<AudioSource> ();
+		} else {
+			OhNo = GameObject.Find ("OH NOOO").GetComponent<AudioSource> ();
+		}
 
 		//playerIndex = (PlayerIndex)0;
 	}
@@ -409,7 +415,7 @@ public class PlayerController : MonoBehaviour {
 		//Check for player death
 		if (coins <= 0) {
 			OhNo.Play();
-			Application.LoadLevel("Player");
+			Application.LoadLevel("Splash");
 			//GetComponent<ParticleSystem>().Play();
 			//Destroy(gameObject);
 
