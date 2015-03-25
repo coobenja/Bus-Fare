@@ -54,10 +54,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/Karl/Documents/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86/XInputDotNetPure.dll</HintPath>
+ <HintPath>C:/Users/Owner/Documents/GitHub/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86/XInputDotNetPure.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/Karl/Documents/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
+ <HintPath>C:/Users/Owner/Documents/GitHub/Shammy-Jam/Bus Fare, Nicklemancers/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

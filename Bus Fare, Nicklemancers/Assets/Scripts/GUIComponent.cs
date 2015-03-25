@@ -53,7 +53,7 @@ public class GUIComponent : MonoBehaviour
 			
 			Vector2 content = guiSkin.box.CalcSize(new GUIContent(text));
 			
-			GUI.Box(new Rect(boxPosition.x - content.x / 2 * offsetX, boxPosition.y + offsetY, content.x, content.y), playerController.coins + "¢");
+			GUI.Box(new Rect(boxPosition.x - content.x / 2 * offsetX, boxPosition.y + offsetY, content.x, content.y),"Health: " + playerController.coins + "¢");
 		}
 	}
 }

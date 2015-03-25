@@ -66,7 +66,12 @@ public class PlayerController : MonoBehaviour {
 	public GamePadState state;
 	private GamePadState prevState;
 
-	public bool OHNOOOmode = false;
+	public bool OHNOOOmode = false; // lol
+
+	// variable to delay death a bit
+	private float deathTimeStart;
+	public float deathTimeWait = .1f;
+	private bool checkDeathTime = true;
 	
 	
 	// Use this for initialization
@@ -415,7 +420,13 @@ public class PlayerController : MonoBehaviour {
 		//Check for player death
 		if (coins <= 0) {
 			OhNo.Play();
+			if(checkDeathTime){
+			deathTimeStart = Time.time;
+				checkDeathTime = false;
+			}
+			if (deathTimeStart + deathTimeWait - Time.time <= 0) {
 			Application.LoadLevel("Splash");
+			}
 			//GetComponent<ParticleSystem>().Play();
 			//Destroy(gameObject);
 
