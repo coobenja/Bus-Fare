@@ -1,26 +1,8 @@
 ﻿<Properties>
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TitleScripts/TitleFlash.cs">
-    <Files>
-      <File FileName="Assets/KY_effects/Script/Lighting.js" Line="1" Column="1" />
-      <File FileName="Assets/KY_effects/Script/ConGUI.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CamShakeSimple.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TitleScripts/TitleAnimation.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TitleScripts/TimedCamShake.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ZTranslate.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TitleScripts/TitleFadeIn.cs" Line="4" Column="26" />
-      <File FileName="Assets/Scripts/TitleScripts/TitleFlash.cs" Line="37" Column="5" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\detection.cs" Line="223" Column="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="378" Column="4" />
-      <File FileName="Assets\XInputDotNet\Examples\XInputTestCS.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\NPCCoins.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CoinVelocity.cs" Line="1" Column="1" />
->>>>>>> FETCH_HEAD
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="416" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
